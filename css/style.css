@@ -1,0 +1,313 @@
+/* ─── CSS Variables (Telegram theme) ──────────────────────── */
+:root {
+  --bg:         var(--tg-theme-bg-color,            #ffffff);
+  --bg2:        var(--tg-theme-secondary-bg-color,  #f4f4f5);
+  --text:       var(--tg-theme-text-color,          #1a1a1a);
+  --hint:       var(--tg-theme-hint-color,          #6b7280);
+  --link:       var(--tg-theme-link-color,          #3390ec);
+  --btn:        var(--tg-theme-button-color,        #3390ec);
+  --btn-txt:    var(--tg-theme-button-text-color,   #ffffff);
+  --destructive:var(--tg-theme-destructive-text-color, #e53935);
+
+  --harmful:    #ef4444;
+  --caution:    #f59e0b;
+  --safe:       #22c55e;
+  --unknown:    #94a3b8;
+
+  --radius:     14px;
+  --radius-sm:  8px;
+  --gap:        12px;
+  --shadow:     0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+}
+
+[data-theme="dark"] {
+  --shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 16px 16px 96px;
+  line-height: 1.5;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  padding: 12px 0 20px;
+}
+
+.header__icon {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.header__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.header__sub {
+  font-size: 14px;
+  color: var(--hint);
+  margin-top: 4px;
+}
+
+/* ─── Input section ─────────────────────────────────────────── */
+.input-section {
+  margin-bottom: 16px;
+}
+
+.input-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--hint);
+  margin-bottom: 8px;
+}
+
+.textarea-wrap {
+  position: relative;
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  max-height: 300px;
+  background: var(--bg2);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.18s;
+  font-family: inherit;
+}
+
+textarea:focus {
+  border-color: var(--btn);
+}
+
+textarea::placeholder {
+  color: var(--hint);
+  font-size: 13px;
+}
+
+.hint-text {
+  font-size: 12px;
+  color: var(--hint);
+  margin-top: 6px;
+  padding-left: 2px;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  font-family: inherit;
+}
+
+.btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--btn);
+  color: var(--btn-txt);
+}
+
+.btn--secondary {
+  background: var(--bg2);
+  color: var(--hint);
+  flex: 0 0 auto;
+  width: 52px;
+  padding: 14px 0;
+  font-size: 18px;
+}
+
+/* ─── Safety badge ──────────────────────────────────────────── */
+.safety-badge {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.safety-badge--harmful { background: rgba(239,68,68,.12); color: var(--harmful); }
+.safety-badge--caution { background: rgba(245,158,11,.12); color: var(--caution); }
+.safety-badge--safe    { background: rgba(34,197,94,.12);  color: var(--safe);    }
+.safety-badge--unknown { background: rgba(148,163,184,.12);color: var(--unknown); }
+
+/* ─── Stats row ─────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  background: var(--bg2);
+  border-radius: var(--radius-sm);
+  padding: 10px 4px;
+  text-align: center;
+  border-top: 3px solid currentColor;
+}
+
+.stat--harmful { color: var(--harmful); }
+.stat--caution { color: var(--caution); }
+.stat--safe    { color: var(--safe);    }
+.stat--unknown { color: var(--unknown); }
+
+.stat__count {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.stat__label {
+  display: block;
+  font-size: 11px;
+  color: var(--hint);
+  margin-top: 3px;
+}
+
+/* ─── Results section ──────────────────────────────────────── */
+.results-section {
+  margin-top: 20px;
+}
+
+.results-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+/* ─── Ingredient cards ──────────────────────────────────────── */
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  background: var(--bg2);
+  border-radius: var(--radius);
+  padding: 14px;
+  border-left: 4px solid;
+  box-shadow: var(--shadow);
+}
+
+.card--harmful { border-left-color: var(--harmful); }
+.card--caution { border-left-color: var(--caution); }
+.card--safe    { border-left-color: var(--safe);    }
+.card--unknown { border-left-color: var(--unknown); }
+
+.card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.card__names { flex: 1; min-width: 0; }
+
+.card__raw {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.card__inci {
+  display: block;
+  font-size: 12px;
+  color: var(--hint);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.card__badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* ─── Badges ─────────────────────────────────────────────────── */
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge--group   { background: rgba(0,0,0,.06); color: var(--hint); }
+.badge--harmful { background: rgba(239,68,68,.12);  color: var(--harmful); }
+.badge--caution { background: rgba(245,158,11,.12); color: var(--caution); }
+.badge--safe    { background: rgba(34,197,94,.12);  color: var(--safe);    }
+.badge--unknown { background: rgba(148,163,184,.12);color: var(--unknown); }
+
+[data-theme="dark"] .badge--group { background: rgba(255,255,255,.08); }
+
+.card__concern {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--harmful);
+  margin-bottom: 6px;
+}
+
+.card__desc {
+  font-size: 13px;
+  color: var(--hint);
+  line-height: 1.55;
+}
+
+/* ─── Empty state ────────────────────────────────────────────── */
+.empty-hint {
+  text-align: center;
+  color: var(--hint);
+  font-size: 14px;
+  padding: 32px 0;
+}
