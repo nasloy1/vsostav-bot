@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Состав косметики</title>
-
-  <!-- Telegram Web App SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -20,46 +17,53 @@
 
   <main>
 
-    <!-- Input -->
-    <section class="input-section">
-      <label class="input-label" for="ingredients-input">Состав продукта</label>
-      <div class="textarea-wrap">
-        <textarea
-          id="ingredients-input"
-          placeholder="Вставьте состав косметики — каждый ингредиент через запятую или с новой строки:
-
-Aqua, Glycerin, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Methylparaben, Parfum, Citric Acid..."
-        ></textarea>
+    <!-- ─── Поиск продукта ─────────────────────────────────── -->
+    <section class="search-section">
+      <label class="input-label">🔎 Найти продукт</label>
+      <div class="search-wrap">
+        <input
+          id="search-input"
+          type="text"
+          class="search-input"
+          placeholder="Название продукта или штрихкод…"
+          autocomplete="off"
+        />
+        <button id="search-btn" class="btn btn--search">Найти</button>
       </div>
-      <p class="hint-text">Ctrl+Enter — быстрый анализ</p>
+      <p class="hint-text">Поиск по базе Open Beauty Facts (~1 млн продуктов)</p>
+      <div id="search-results" class="search-results" hidden></div>
+    </section>
+
+    <div class="divider">
+      <span>или введите состав вручную</span>
+    </div>
+
+    <!-- ─── Ручной ввод состава ────────────────────────────── -->
+    <section id="manual-section" class="input-section">
+      <label class="input-label" for="ingredients-input">Состав продукта</label>
+      <textarea
+        id="ingredients-input"
+        placeholder="Aqua, Glycerin, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Methylparaben, Parfum, Citric Acid…"
+      ></textarea>
+      <p class="hint-text">Ctrl+Enter — быстрый анализ · ингредиенты через запятую или построчно</p>
 
       <div class="btn-row">
         <button id="analyze-btn" class="btn btn--primary">🔍 Анализировать</button>
-        <button id="clear-btn" class="btn btn--secondary" title="Очистить">✕</button>
+        <button id="clear-btn"   class="btn btn--secondary" title="Очистить">✕</button>
       </div>
     </section>
 
-    <!-- Results -->
+    <!-- ─── Результаты ─────────────────────────────────────── -->
     <section id="results" class="results-section" hidden>
-
       <h2 class="results-title">Результаты анализа</h2>
-
-      <!-- Overall safety -->
       <span id="safety-badge" class="safety-badge"></span>
-
-      <!-- Counts -->
       <div id="stats" class="stats"></div>
-
-      <!-- Per-ingredient cards -->
       <div id="ingredients-list" class="ingredients-list"></div>
-
     </section>
 
   </main>
 
-  <!-- Scripts -->
   <script src="js/db.js"></script>
   <script src="js/app.js"></script>
-
 </body>
 </html>
